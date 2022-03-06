@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Asteroids</title>
+    <!--Website icon-->
+    <link rel="shortcut icon" type="image/png" href="icon.png">
+
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch&display=swap" rel="stylesheet">
+
+    <!--Tailwind css and style css-->
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"/>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+            background: black;
+        }
+
+        #title{
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        #instructions p{
+            font-family: 'Chakra Petch', sans-serif;
+        }
+
+        #instructions img{
+            float: left;
+        }
+
+        #gameovertxt, #textScoreEl, #newHighScoreText{
+            font-family: 'Orbitron', sans-serif;
+            display: none;
+        }
+
+        #bigScoreEl, #scoreDisplay, #highscoreDisplay{
+            font-family: 'Sigmar One', cursive;
+            display: none;
+        }
+
+        #instBtn{
+            background: mintcream;
+            font-weight: 500;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- adding a UI panel to display the score and the start button -->
+    <div class="fixed inset-0 flex items-center justify-center" id="modalEl">
+        <div class="max-w-md w-full rounded-2xl border-double border-4 border-black p-6 text-center" style="background: lightsteelblue;">
+            <!--Title-->
+            <h1 class="text-4xl font-bold select-none" id="title">A s t e r o i d s</h1>
+            
+            <!-- Information and instructions section-->
+            <div class="py-1" id="instruction">
+                <p class="text-m select-none">
+                    Destroy the asteroids before they crash into the spaceship.
+                    <br> (Use desktop or laptop for better user experience)
+                </p>
+                <br>
+                <p class="text-m select-none">How to Play?</p> 
+
+                <div class="flex items-center justify-center">
+                    <img src="spacebar.png" alt="SpaceBar" width="30">                
+                    <p class="text-m text-justify select-none">&nbsp;: Press spacebar to shoot lasers</p>
+                </div>
+
+                <div class="flex items-center justify-center">
+                    <img src="left-arrow.png" alt="left Arrow Key" width="15">
+                    <p class="text-m text-justify select-none">&nbsp;: Press left-arrow key to rotate anti-clockwise</p> 
+                </div>
+
+                <div class="flex items-center justify-center">
+                    <img src="right-arrow.png" alt="Right Arrow Key" width="15"> 
+                    <p class="text-m text-justify select-none">&nbsp;: Press rigth-arrow key to rotate clockwise</p>
+                </div>
+
+                <div class="flex items-center justify-center">
+                    <img src="up-arrow.png" alt="Up Arrow Key" width="15">
+                    <p class="text-m text-justify select-none">&nbsp;: Press up-arrow key to move forward</p> 
+                </div>
+                <br>
+            </div>
+
+            <!--Game over text-->
+            <p class="text-4xl font-bold select-none" id="gameovertxt">G a m e&nbsp;&nbsp;O v e r</p>
+
+            <!--Score and high score display-->
+            <h1 class="text-4xl font-bold leading-none" id="bigScoreEl">0</h1>
+            <p class="text-sm text-gray-900 mb-4" id="textScoreEl">Your Score</p>
+
+            <h1 class="text-4xl font-bold leading-none" style="font-family: 'Sigmar One', cursive;" id="bigHighScoreEl"></h1>
+            <p class="text-sm text-gray-900 mb-4" style="font-family: 'Orbitron', sans-serif;">High Score</p>
+
+            <p class="text-2xl font-bold select-none" id="newHighScoreText">!! New High Score !!</p>
+            
+            <!--Start Button-->
+            <div>
+                <button class="w-full py-2 rounded-full text-m focus:outline-none" id="startGameBtn" style="background: mintcream; font-weight: 500;">S t a r t</button>
+            </div>
+
+            <!--Instructions button-->
+            <div>
+                <button class="w-full rounded-full text-m select-none py-2 mt-2 focus:outline-none" id="instBtn">I n s t r u c t i o n s</button>
+            </div>
+        </div>
+    </div>
+
+    <!--Score anfd high scores display on the canvas-->
+    <div class="fixed w-full grid grid-cols-3 grid-rows-1">
+        <div class="col-start-2 text-white text-4xl text-center select-none" id="scoreDisplay">
+            <span id="scoreEl">0</span>
+        </div>
+    
+        <div class="col-start-3 text-white text-4xl text-right select-none" id="highscoreDisplay">
+            <span style="font-size: 24px;">Best: </span>
+            <span id="highscoreEl"></span>
+        </div>
+    </div>
+
+    <canvas></canvas>
+    <script src="script.js"></script>
+</body>
+
+</html>
